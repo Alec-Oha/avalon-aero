@@ -459,6 +459,7 @@ footer{padding:2.5rem 6%;border-top:1px solid var(--border);}
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 
 /* ---------- nav scroll state ---------- */
 const topnav = document.getElementById('topnav');
@@ -479,7 +480,7 @@ document.querySelectorAll('.marquee-track').forEach(t => {
    MODEL_URL below. If it fails to load (e.g. not uploaded yet)
    this silently falls back to the placeholder rig.
    ========================================================= */
-const MODEL_URL = 'models/excalibur.glb';
+const MODEL_URL = 'models/Excalibur_Assembly.glb';
 
 const stage = document.getElementById('viewerStage');
 const scene = new THREE.Scene();
@@ -629,7 +630,10 @@ const placeholder = buildPlaceholder();
 rig.add(placeholder);
 
 // attempt to load a real model; fall back silently if absent
+const dracoLoader = new DRACOLoader();
+dracoLoader.setDecoderPath('https://unpkg.com/three@0.160.0/examples/jsm/libs/draco/');
 const loader = new GLTFLoader();
+loader.setDRACOLoader(dracoLoader);
 loader.load(
   MODEL_URL,
   (gltf) => {
