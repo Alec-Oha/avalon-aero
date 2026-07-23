@@ -537,8 +537,8 @@ const heroHint = document.getElementById('heroHint');
 const scene = new THREE.Scene();
 scene.background = null;
 
-const DEFAULT_CAM = new THREE.Vector3(2.89, 1.79, 3.06);
-const DEFAULT_TARGET = new THREE.Vector3(0, 0.4, 0);
+const DEFAULT_CAM = new THREE.Vector3(2.46, 1.40, 2.60);
+const DEFAULT_TARGET = new THREE.Vector3(0, 0.22, 0);
 
 const camera = new THREE.PerspectiveCamera(38, stage.clientWidth / stage.clientHeight, 0.1, 100);
 camera.position.copy(DEFAULT_CAM);
@@ -584,7 +584,7 @@ controls.enabled = false;
 controls.enablePan = true;
 controls.screenSpacePanning = true;
 controls.panSpeed = 0.6;
-controls.minDistance = 1.9;
+controls.minDistance = 1.6;
 controls.maxDistance = 7;
 controls.minPolarAngle = 0.15;
 controls.maxPolarAngle = Math.PI - 0.35;
