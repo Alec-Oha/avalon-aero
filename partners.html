@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partners &amp; Sponsors | Avalon Aero</title>
+<meta name="description" content="The partners and sponsors behind Excalibur and Avalon Aero's DARPA Heavy Lift Challenge campaign.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gm-950:#0d1114;
+  --gm-900:#12171a;
+  --gm-800:#1a2126;
+  --gm-700:#222b31;
+  --gm-600:#2e3a41;
+  --line:rgba(255,255,255,0.09);
+  --line-strong:rgba(255,255,255,0.18);
+  --white:#f4f5f4;
+  --muted:#9fabb1;
+  --dim:#5d6b72;
+  --black:#07090a;
+  --signal:#ffc41f;
+  --font-display:'Space Grotesk',sans-serif;
+  --font-mono:'JetBrains Mono',monospace;
+  --nav-h:68px;
+  --max-w:1180px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--gm-900);color:var(--white);font-family:var(--font-display);font-size:16px;line-height:1.6;}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 6%;}
+a{color:inherit;}
+::selection{background:var(--signal);color:var(--black);}
+
+.topnav{
+  position:fixed;top:0;left:0;right:0;height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 6%;z-index:500;
+  background:linear-gradient(180deg,#333f47 0%,var(--gm-600) 100%);
+  border-bottom:1px solid var(--black);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.10);
+}
+.logo{display:flex;align-items:center;gap:0.8rem;text-decoration:none;}
+.logo img{height:32px;width:auto;display:block;filter:brightness(0) invert(1);opacity:0.95;}
+.logo-word{font-family:var(--font-mono);font-size:0.82rem;font-weight:600;letter-spacing:0.26em;border-left:1px solid var(--line-strong);padding-left:0.8rem;}
+.nav-links{display:flex;gap:2rem;align-items:center;}
+.nav-links a{font-family:var(--font-mono);font-size:0.76rem;letter-spacing:0.06em;color:var(--muted);text-decoration:none;text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--white);}
+
+main{padding:calc(var(--nav-h) + 5rem) 0 6rem;}
+
+.page-head{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:end;margin-bottom:4rem;}
+.eyebrow{
+  font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.24em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:1rem;
+  display:flex;align-items:center;gap:0.7rem;
+}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--signal);}
+.page-head h1{
+  font-weight:700;font-size:clamp(2.8rem,6.5vw,4.6rem);
+  line-height:0.98;letter-spacing:-0.01em;text-transform:uppercase;
+}
+.page-head h1 em{font-style:normal;color:var(--signal);}
+.page-head .intro{
+  font-size:0.98rem;color:var(--muted);line-height:1.8;text-align:right;
+  align-self:end;
+}
+.page-head .intro strong{color:var(--white);font-weight:500;}
+
+.partner-list{border-top:1px solid var(--line-strong);}
+.partner-row{
+  display:grid;
+  grid-template-columns:44px 58px 1fr auto auto 30px;
+  align-items:center;gap:1.4rem;
+  padding:1.5rem 0;
+  border-bottom:1px solid var(--line);
+  text-decoration:none;
+  transition:background 0.2s;
+}
+.partner-row:hover{background:rgba(255,255,255,0.02);}
+.p-index{font-family:var(--font-mono);font-size:0.72rem;color:var(--dim);}
+.p-logo{width:58px;height:48px;display:flex;align-items:center;justify-content:center;}
+.p-logo img{max-width:100%;max-height:100%;object-fit:contain;}
+.p-name{
+  font-weight:700;font-size:clamp(1.2rem,2.4vw,1.7rem);
+  letter-spacing:0.01em;text-transform:uppercase;
+}
+.p-desc{font-family:var(--font-mono);font-size:0.78rem;color:var(--muted);text-align:right;}
+.p-tag{
+  font-family:var(--font-mono);font-size:0.64rem;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--white);
+  border:1px solid var(--line-strong);border-radius:2px;
+  background:linear-gradient(180deg,var(--gm-600),var(--gm-700));
+  padding:0.4rem 0.7rem;white-space:nowrap;
+}
+.p-arrow{color:var(--signal);font-family:var(--font-mono);font-size:1rem;text-align:right;transition:transform 0.2s;}
+.partner-row:hover .p-arrow{transform:translateX(4px);}
+
+.page-foot{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-top:2.5rem;flex-wrap:wrap;gap:1rem;
+}
+.become{
+  font-family:var(--font-mono);font-size:0.78rem;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--white);text-decoration:none;
+  border-bottom:1px solid var(--signal);padding-bottom:0.3rem;
+  transition:color 0.2s;
+}
+.become:hover{color:var(--signal);}
+.page-foot .stamp{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--dim);}
+
+footer{padding:2.5rem 6%;border-top:1px solid var(--black);box-shadow:inset 0 1px 0 var(--line);background:var(--gm-950);}
+.footer-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-inner span,.footer-inner a{font-family:var(--font-mono);font-size:0.72rem;color:var(--dim);text-decoration:none;}
+
+@media (max-width:860px){
+  .page-head{grid-template-columns:1fr;}
+  .page-head .intro{text-align:left;}
+  .partner-row{grid-template-columns:30px 48px 1fr 30px;}
+  .p-desc,.p-tag{display:none;}
+  .logo-word{display:none;}
+  .nav-links{gap:1.2rem;}
+}
+</style>
+</head>
+<body>
+
+<header class="topnav">
+  <a href="index.html" class="logo">
+    <img src="assets/avalon-logo.png" alt="Avalon Aero logo">
+    <span class="logo-word">AVALON AERO</span>
+  </a>
+  <nav class="nav-links">
+    <a href="index.html#approach">Approach</a>
+    <a href="index.html#challenge">Challenge</a>
+    <a href="index.html#team">Team</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <div class="container">
+    <div class="page-head">
+      <div>
+        <div class="eyebrow">Partners &amp; Sponsors</div>
+        <h1>Built<br>With The<br><em>Best</em></h1>
+      </div>
+      <p class="intro">Competing in <strong>DARPA LIFT 2026</strong> demands elite partners. Every component on <strong>Excalibur</strong> traces back to an industry leader.</p>
+    </div>
+
+    <div class="partner-list">
+      <a class="partner-row" href="https://www.ssab.com" target="_blank" rel="noopener">
+        <span class="p-index">01</span>
+        <span class="p-logo"><img src="assets/partners/ssab.png" alt="SSAB logo"></span>
+        <span class="p-name">SSAB</span>
+        <span class="p-desc">Additive manufacturing</span>
+        <span class="p-tag">AM / 3D Print</span>
+        <span class="p-arrow">&#8594;</span>
+      </a>
+      <a class="partner-row" href="https://www.propel.aero" target="_blank" rel="noopener">
+        <span class="p-index">02</span>
+        <span class="p-logo"><img src="assets/partners/propel.png" alt="Propel Aero logo"></span>
+        <span class="p-name">Propel Aero</span>
+        <span class="p-desc">Battery &amp; power systems</span>
+        <span class="p-tag">Power</span>
+        <span class="p-arrow">&#8594;</span>
+      </a>
+      <a class="partner-row" href="https://hargravetechnologies.com" target="_blank" rel="noopener">
+        <span class="p-index">03</span>
+        <span class="p-logo"><img src="assets/partners/hargrave.png" alt="Hargrave Tech logo"></span>
+        <span class="p-name">Hargrave Tech</span>
+        <span class="p-desc">Electronic speed controllers</span>
+        <span class="p-tag">ESCs</span>
+        <span class="p-arrow">&#8594;</span>
+      </a>
+      <a class="partner-row" href="https://harwal.net" target="_blank" rel="noopener">
+        <span class="p-index">04</span>
+        <span class="p-logo"><img src="assets/partners/harwal.png" alt="Harwal logo"></span>
+        <span class="p-name">Harwal</span>
+        <span class="p-desc">Carbon fiber airframe</span>
+        <span class="p-tag">Airframe</span>
+        <span class="p-arrow">&#8594;</span>
+      </a>
+      <a class="partner-row" href="https://zeropointenergylabs.com" target="_blank" rel="noopener">
+        <span class="p-index">05</span>
+        <span class="p-logo"><img src="assets/partners/zpe.png" alt="Zero Point Energy logo"></span>
+        <span class="p-name">Zero Point Energy</span>
+        <span class="p-desc">Zero Point Energy Labs</span>
+        <span class="p-tag">Energy</span>
+        <span class="p-arrow">&#8594;</span>
+      </a>
+      <a class="partner-row" href="https://www.uavos.com" target="_blank" rel="noopener">
+        <span class="p-index">06</span>
+        <span class="p-logo"><img src="assets/partners/uavos.png" alt="UAVOS logo"></span>
+        <span class="p-name">UAVOS</span>
+        <span class="p-desc">Propeller systems</span>
+        <span class="p-tag">Propellers</span>
+        <span class="p-arrow">&#8594;</span>
+      </a>
+    </div>
+
+    <div class="page-foot">
+      <a class="become" href="contact.html">Become a Partner &#8594;</a>
+      <span class="stamp">DARPA LIFT Challenge 2026</span>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span>© 2026 Avalon Aero LLC</span>
+    <a href="mailto:Contact@Avalon-Aero.com">Contact@Avalon-Aero.com</a>
+  </div>
+</footer>
+
+</body>
+</html>

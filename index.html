@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Avalon Aero — To Lifting Heavy</title>
-<meta name="description" content="Avalon Aero is developing Excalibur, a swashplateless coaxial helicopter targeting a 4:1 payload-to-weight ratio for the DARPA Heavy Lift Challenge.">
+<title>Avalon Aero</title>
+<meta name="description" content="Avalon Aero is developing Excalibur, a swashplateless coaxial helicopter targeting a 4:1 payload to weight ratio for the DARPA Heavy Lift Challenge.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -18,28 +18,30 @@
 </script>
 <style>
 :root{
-  --bg:#08090a;
-  --bg-alt:#0d0f11;
-  --surface:#141618;
-  --surface-2:#1b1e21;
-  --border:rgba(255,255,255,0.08);
-  --border-strong:rgba(255,255,255,0.16);
-  --text:#ece9e2;
-  --text-muted:#9a9994;
-  --text-dim:#5c5b57;
-  --accent:#ff5a1f;
-  --accent-2:#ffb020;
-  --accent-dim:rgba(255,90,31,0.14);
+  --gm-950:#0d1114;
+  --gm-900:#12171a;
+  --gm-800:#1a2126;
+  --gm-700:#222b31;
+  --gm-600:#2e3a41;
+  --gm-500:#3d4c55;
+  --line:rgba(255,255,255,0.09);
+  --line-strong:rgba(255,255,255,0.18);
+  --white:#f4f5f4;
+  --muted:#9fabb1;
+  --dim:#5d6b72;
+  --black:#07090a;
+  --signal:#ffc41f;
+  --signal-dim:rgba(255,196,31,0.15);
   --font-display:'Space Grotesk',sans-serif;
   --font-mono:'JetBrains Mono',monospace;
-  --nav-h:64px;
+  --nav-h:68px;
   --max-w:1180px;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
-  background:var(--bg);
-  color:var(--text);
+  background:var(--gm-900);
+  color:var(--white);
   font-family:var(--font-display);
   font-size:16px;
   line-height:1.6;
@@ -47,238 +49,268 @@ body{
 }
 .container{max-width:var(--max-w);margin:0 auto;padding:0 6%;}
 a{color:inherit;}
+::selection{background:var(--signal);color:var(--black);}
+
 .eyebrow{
   font-family:var(--font-mono);
-  font-size:0.72rem;
-  letter-spacing:0.22em;
+  font-size:0.7rem;
+  letter-spacing:0.24em;
   text-transform:uppercase;
-  color:var(--accent);
-  margin-bottom:0.9rem;
-  display:flex;
-  align-items:center;
-  gap:0.6rem;
+  color:var(--muted);
+  margin-bottom:1rem;
+  display:flex;align-items:center;gap:0.7rem;
 }
-.eyebrow::before{content:'';width:18px;height:1px;background:var(--accent);}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--signal);}
 h2{
-  font-family:var(--font-display);
   font-weight:600;
   font-size:clamp(1.8rem,4vw,2.6rem);
   letter-spacing:-0.01em;
   margin-bottom:1.1rem;
 }
-.lede{
-  color:var(--text-muted);
-  font-size:1.02rem;
-  max-width:640px;
-  line-height:1.75;
+.lede{color:var(--muted);font-size:1.02rem;max-width:640px;line-height:1.75;}
+
+/* machined panel base */
+.panel{
+  position:relative;
+  background:linear-gradient(180deg,var(--gm-600) 0%,var(--gm-700) 100%);
+  border:1px solid var(--line);
+  border-top-color:rgba(255,255,255,0.16);
+  border-radius:3px;
 }
+.brackets::before,.brackets::after{
+  content:'';position:absolute;width:14px;height:14px;pointer-events:none;
+}
+.brackets::before{top:-1px;left:-1px;border-top:2px solid var(--line-strong);border-left:2px solid var(--line-strong);}
+.brackets::after{bottom:-1px;right:-1px;border-bottom:2px solid var(--line-strong);border-right:2px solid var(--line-strong);}
 
 /* ===== NAV ===== */
 .topnav{
   position:fixed;top:0;left:0;right:0;height:var(--nav-h);
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 6%;
-  z-index:500;
-  background:rgba(8,9,10,0.72);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid transparent;
-  transition:border-color 0.25s, background 0.25s;
+  padding:0 6%;z-index:500;
+  background:linear-gradient(180deg,#333f47 0%,var(--gm-600) 100%);
+  border-bottom:1px solid var(--black);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,0.10);
+  transition:box-shadow 0.25s;
 }
-.topnav.scrolled{border-bottom-color:var(--border);}
-.logo{
-  display:flex;align-items:center;gap:0.55rem;
-  font-family:var(--font-mono);font-weight:600;font-size:0.92rem;
-  letter-spacing:0.08em;text-decoration:none;
+.topnav.scrolled{box-shadow:inset 0 1px 0 rgba(255,255,255,0.10), 0 10px 28px rgba(0,0,0,0.45);}
+.logo{display:flex;align-items:center;gap:0.8rem;text-decoration:none;}
+.logo img{height:32px;width:auto;display:block;filter:brightness(0) invert(1);opacity:0.95;}
+.logo-word{
+  font-family:var(--font-mono);font-size:0.82rem;font-weight:600;
+  letter-spacing:0.26em;color:var(--white);
+  border-left:1px solid var(--line-strong);padding-left:0.8rem;
 }
-.logo-mark{
-  width:22px;height:22px;position:relative;flex-shrink:0;
-}
-.logo-mark svg{width:100%;height:100%;display:block;}
-.nav-links{display:flex;gap:2.1rem;align-items:center;}
+.nav-links{display:flex;gap:2rem;align-items:center;}
 .nav-links a{
-  font-family:var(--font-mono);font-size:0.78rem;letter-spacing:0.04em;
-  color:var(--text-muted);text-decoration:none;transition:color 0.2s;
+  font-family:var(--font-mono);font-size:0.76rem;letter-spacing:0.06em;
+  color:var(--muted);text-decoration:none;transition:color 0.2s;
+  text-transform:uppercase;
 }
-.nav-links a:hover{color:var(--text);}
+.nav-links a:hover{color:var(--white);}
 .nav-cta{
-  border:1px solid var(--border-strong);
-  padding:0.5rem 1.1rem;border-radius:2px;color:var(--text) !important;
-  transition:border-color 0.2s, background 0.2s;
+  border:1px solid var(--line-strong);
+  background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(0,0,0,0.12));
+  padding:0.5rem 1.1rem;border-radius:2px;color:var(--white) !important;
+  transition:border-color 0.2s;
 }
-.nav-cta:hover{border-color:var(--accent);background:var(--accent-dim);}
+.nav-cta:hover{border-color:var(--signal);}
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
-.hamburger span{display:block;width:22px;height:1.5px;background:var(--text);}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--white);}
 
 /* ===== HERO ===== */
 .hero{
-  position:relative;min-height:100vh;
-  display:flex;flex-direction:column;justify-content:center;
-  padding:calc(var(--nav-h) + 2rem) 6% 4rem;
-  overflow:hidden;
+  position:relative;height:100vh;min-height:580px;overflow:hidden;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 42%, #1c242a 0%, var(--gm-950) 78%);
 }
-.hero-bg{position:absolute;inset:0;z-index:0;}
-.hero-bg canvas{width:100%;height:100%;display:block;}
-.hero-grid{
-  position:absolute;inset:0;z-index:0;opacity:0.5;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-  background-size:56px 56px;
-  -webkit-mask-image:radial-gradient(ellipse 70% 60% at 50% 40%, #000 10%, transparent 75%);
-  mask-image:radial-gradient(ellipse 70% 60% at 50% 40%, #000 10%, transparent 75%);
-}
-.hero-inner{position:relative;z-index:2;max-width:var(--max-w);margin:0 auto;width:100%;}
-.hero h1{
-  font-size:clamp(3rem,9vw,6.4rem);
-  font-weight:700;letter-spacing:-0.02em;line-height:0.96;
-  margin-bottom:0.6rem;
-}
-.hero .tagline{
-  font-family:var(--font-mono);font-size:clamp(1rem,2vw,1.3rem);
-  color:var(--accent);letter-spacing:0.02em;margin-bottom:1.6rem;
-}
-.hero .lede{font-size:1.08rem;margin-bottom:2.2rem;}
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap;}
-.btn{
-  font-family:var(--font-mono);font-size:0.82rem;letter-spacing:0.04em;
-  padding:0.9rem 1.6rem;border-radius:2px;text-decoration:none;
-  display:inline-flex;align-items:center;gap:0.5rem;
-  transition:transform 0.15s, background 0.2s, border-color 0.2s;
-}
-.btn:hover{transform:translateY(-1px);}
-.btn-primary{background:var(--accent);color:#0a0a0a;font-weight:600;border:1px solid var(--accent);}
-.btn-primary:hover{background:#ff7440;}
-.btn-ghost{border:1px solid var(--border-strong);color:var(--text);}
-.btn-ghost:hover{border-color:var(--accent);}
-.scroll-cue{
-  position:absolute;bottom:2.2rem;left:6%;z-index:2;
-  font-family:var(--font-mono);font-size:0.68rem;color:var(--text-dim);
-  letter-spacing:0.18em;text-transform:uppercase;
+.hero-viewer{position:absolute;inset:0;z-index:0;}
+.hero-viewer canvas{display:block;width:100%;height:100%;}
+.hero-viewer.live canvas{cursor:grab;}
+.hero-viewer.live canvas:active{cursor:grabbing;}
+.hero-viewer.locked canvas{cursor:pointer;}
+
+/* viewer state chip + close */
+.viewer-state{
+  position:absolute;z-index:4;top:calc(var(--nav-h) + 1.4rem);right:6%;
   display:flex;align-items:center;gap:0.6rem;
 }
-.scroll-cue::after{content:'';width:1px;height:34px;background:linear-gradient(var(--text-dim),transparent);}
+.state-chip{
+  font-family:var(--font-mono);font-size:0.64rem;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--signal);
+  border:1px solid var(--line-strong);border-radius:2px;
+  padding:0.35rem 0.7rem;
+  background:rgba(13,17,20,0.6);backdrop-filter:blur(8px);
+  display:flex;align-items:center;gap:0.5rem;
+}
+.hero-viewer.live ~ .viewer-state .state-chip{color:var(--muted);}
+.viewer-instructions{
+  position:absolute;z-index:4;top:calc(var(--nav-h) + 4.2rem);right:6%;
+  font-family:var(--font-mono);font-size:0.64rem;letter-spacing:0.1em;
+  color:var(--dim);text-transform:uppercase;text-align:right;
+  line-height:2;display:none;pointer-events:none;
+}
+.viewer-instructions.show{display:block;}
+.state-dot{width:6px;height:6px;border-radius:50%;background:var(--dim);}
+.hero-viewer.live ~ .viewer-state .state-dot{background:var(--signal);box-shadow:0 0 6px var(--signal);}
+.viewer-close{
+  width:30px;height:30px;border-radius:2px;
+  border:1px solid var(--line-strong);
+  background:linear-gradient(180deg,var(--gm-600),var(--gm-700));
+  color:var(--white);font-family:var(--font-mono);font-size:0.85rem;
+  cursor:pointer;display:none;align-items:center;justify-content:center;
+  transition:border-color 0.2s;
+  line-height:1;
+}
+.viewer-close:hover{border-color:var(--signal);}
+.viewer-close.show{display:flex;}
 
-/* ===== SECTION SHELL ===== */
-section.block{padding:6.5rem 0;border-top:1px solid var(--border);position:relative;}
-section.block.alt{background:var(--bg-alt);}
+.hero-copy{
+  position:absolute;z-index:3;left:6%;bottom:6rem;
+  max-width:480px;pointer-events:none;
+}
+.hero-copy h1{
+  font-size:clamp(2.6rem,6vw,4.4rem);font-weight:700;
+  letter-spacing:-0.02em;line-height:1.0;margin-bottom:0.9rem;
+}
+.hero-copy .tagline{
+  font-family:var(--font-mono);font-size:clamp(0.95rem,1.6vw,1.15rem);
+  color:var(--signal);letter-spacing:0.03em;margin-bottom:1.5rem;
+}
+.hero-copy .btn{pointer-events:auto;}
 
-/* ===== VIEWER ===== */
-.viewer-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:3rem;align-items:stretch;margin-top:2.5rem;}
-.viewer-stage{
-  position:relative;background:radial-gradient(ellipse at 50% 38%, #ffffff 0%, #eeeeee 100%);
-  border:1px solid var(--border);border-radius:4px;overflow:hidden;
-  min-height:460px;
+.hero-hint{
+  position:absolute;z-index:3;bottom:1.4rem;left:6%;
+  font-family:var(--font-mono);font-size:0.64rem;letter-spacing:0.12em;
+  color:var(--dim);text-transform:uppercase;
+  display:flex;gap:1.1rem;pointer-events:none;flex-wrap:wrap;
 }
-.viewer-stage canvas{display:block;width:100%;height:100%;cursor:grab;}
-.viewer-stage canvas:active{cursor:grabbing;}
-.viewer-hint{
-  position:absolute;bottom:1rem;left:1rem;
-  font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.1em;
-  color:#5a5a58;text-transform:uppercase;
-  display:flex;gap:1.1rem;pointer-events:none;
-}
-.viewer-hint span{display:flex;align-items:center;gap:0.4rem;}
-.viewer-badge{
-  position:absolute;top:1rem;left:1rem;
-  font-family:var(--font-mono);font-size:0.65rem;letter-spacing:0.14em;
-  color:#4a4a48;text-transform:uppercase;
-  border:1px solid rgba(0,0,0,0.14);padding:0.3rem 0.6rem;border-radius:2px;
-  background:rgba(255,255,255,0.7);
-}
-.hud{display:flex;flex-direction:column;gap:0;border:1px solid var(--border);border-radius:4px;overflow:hidden;}
-.hud-row{
-  padding:1.1rem 1.25rem;border-bottom:1px solid var(--border);
-  display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
-}
-.hud-row:last-child{border-bottom:none;}
-.hud-label{font-family:var(--font-mono);font-size:0.7rem;letter-spacing:0.1em;color:var(--text-dim);text-transform:uppercase;}
-.hud-value{font-family:var(--font-mono);font-size:1.05rem;font-weight:600;color:var(--text);white-space:nowrap;}
-.hud-value.accent{color:var(--accent);}
 
-/* ===== APPROACH ===== */
+/* ruler tick strip along hero bottom */
+.ruler{
+  position:absolute;z-index:2;left:0;right:0;bottom:0;height:14px;
+  background:
+    repeating-linear-gradient(90deg,
+      var(--line-strong) 0 1px, transparent 1px 10px),
+    repeating-linear-gradient(90deg,
+      rgba(255,255,255,0.28) 0 1px, transparent 1px 50px);
+  opacity:0.5;pointer-events:none;
+}
+
+.btn{
+  font-family:var(--font-mono);font-size:0.8rem;letter-spacing:0.05em;
+  padding:0.9rem 1.6rem;border-radius:2px;text-decoration:none;
+  display:inline-flex;align-items:center;gap:0.5rem;
+  transition:transform 0.15s, filter 0.2s, border-color 0.2s;
+  text-transform:uppercase;
+}
+.btn:hover{transform:translateY(-1px);}
+.btn-primary{
+  background:linear-gradient(180deg,#ffd24d,#f0b400);
+  color:var(--black);font-weight:600;border:1px solid #ffdb70;
+}
+.btn-primary:hover{filter:brightness(1.08);}
+.btn-ghost{border:1px solid var(--line-strong);color:var(--white);background:rgba(13,17,20,0.4);}
+.btn-ghost:hover{border-color:var(--signal);}
+
+/* ===== SECTIONS ===== */
+section.block{padding:6.5rem 0;border-top:1px solid var(--black);box-shadow:inset 0 1px 0 var(--line);position:relative;}
+section.block.raised{background:var(--gm-800);}
+
+/* approach */
 .approach-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;margin-top:2rem;}
-.spec-list{list-style:none;margin-top:1.75rem;display:flex;flex-direction:column;gap:0;}
+.spec-list{list-style:none;margin-top:1.75rem;}
 .spec-list li{
-  font-family:var(--font-mono);font-size:0.85rem;color:var(--text-muted);
-  padding:0.85rem 0;border-bottom:1px solid var(--border);
-  display:flex;align-items:baseline;gap:0.75rem;
+  font-family:var(--font-mono);font-size:0.85rem;color:var(--muted);
+  padding:0.85rem 0;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;gap:0.8rem;
 }
-.spec-list li::before{content:'—';color:var(--accent);flex-shrink:0;}
-.hinge-diagram{
-  border:1px solid var(--border);border-radius:4px;background:var(--surface);
-  display:flex;align-items:center;justify-content:center;padding:2rem;
-}
+.spec-list li::before{content:'';width:10px;height:2px;background:var(--signal);flex-shrink:0;}
+.hinge-diagram{padding:2rem;display:flex;align-items:center;justify-content:center;}
 .hinge-diagram svg{width:100%;max-width:320px;height:auto;}
 
-/* ===== TIMELINE ===== */
-.timeline{margin-top:3rem;position:relative;}
-.timeline-track{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
-  position:relative;
-}
-.timeline-track::before{
-  content:'';position:absolute;top:9px;left:0;right:0;height:1px;background:var(--border-strong);
-}
+/* timeline */
+.timeline{margin-top:3rem;}
+.timeline-track{display:grid;grid-template-columns:repeat(4,1fr);position:relative;}
+.timeline-track::before{content:'';position:absolute;top:9px;left:0;right:0;height:1px;background:var(--line-strong);}
 .tl-node{position:relative;padding-top:2rem;padding-right:1.5rem;}
 .tl-dot{
   position:absolute;top:0;left:0;width:19px;height:19px;border-radius:50%;
-  background:var(--bg-alt);border:2px solid var(--border-strong);z-index:2;
+  background:var(--signal);border:2px solid var(--signal);z-index:2;
 }
-.tl-node.current .tl-dot{border-color:var(--accent);background:var(--accent);box-shadow:0 0 0 4px var(--accent-dim);}
-.tl-phase{font-family:var(--font-mono);font-size:0.68rem;letter-spacing:0.1em;color:var(--accent);text-transform:uppercase;margin-bottom:0.4rem;}
-.tl-node:not(.current) .tl-phase{color:var(--text-dim);}
+.tl-node.target .tl-dot{
+  background:var(--gm-800);
+  border:2px solid var(--signal);
+  box-shadow:0 0 0 3px var(--gm-800), 0 0 0 4px var(--signal);
+}
+.tl-phase{font-family:var(--font-mono);font-size:0.66rem;letter-spacing:0.12em;color:var(--signal);text-transform:uppercase;margin-bottom:0.4rem;}
+.tl-node:not(.current) .tl-phase{color:var(--dim);}
 .tl-title{font-size:0.98rem;font-weight:600;margin-bottom:0.35rem;}
-.tl-desc{font-size:0.82rem;color:var(--text-muted);line-height:1.55;}
+.tl-desc{font-size:0.82rem;color:var(--muted);line-height:1.55;}
 
-/* ===== TEAM ===== */
+/* team */
 .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
-.team-card{
-  border:1px solid var(--border);border-radius:4px;padding:1.75rem;
-  background:var(--surface);transition:border-color 0.2s, transform 0.2s;
-}
-.team-card:hover{border-color:var(--border-strong);transform:translateY(-2px);}
-.team-mark{
-  font-family:var(--font-mono);font-size:0.7rem;color:var(--accent);letter-spacing:0.1em;margin-bottom:1.1rem;
-}
+.team-card{padding:1.75rem;transition:transform 0.2s, border-color 0.2s;}
+.team-card:hover{transform:translateY(-2px);border-color:var(--line-strong);}
 .team-name{font-size:1.15rem;font-weight:600;margin-bottom:0.35rem;}
-.team-role{font-family:var(--font-mono);font-size:0.78rem;color:var(--text-muted);}
+.team-role{font-family:var(--font-mono);font-size:0.76rem;color:var(--muted);letter-spacing:0.06em;text-transform:uppercase;}
 
-/* ===== PARTNERS ===== */
+/* partners */
 .marquee{
-  overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  padding:2.2rem 0;margin-top:2.5rem;
+  overflow:hidden;border-top:1px solid var(--black);border-bottom:1px solid var(--black);
+  box-shadow:inset 0 1px 0 var(--line), inset 0 -1px 0 var(--line);
+  padding:2.2rem 0;margin-top:2.5rem;background:var(--gm-950);
 }
-.marquee-track{
-  display:flex;gap:3.5rem;white-space:nowrap;width:max-content;
-  animation:scroll 28s linear infinite;
-}
-.marquee-track span{
-  font-family:var(--font-mono);font-size:1.1rem;letter-spacing:0.06em;
-  color:var(--text-dim);text-transform:uppercase;
-}
+.marquee-track{display:flex;gap:3.5rem;white-space:nowrap;width:max-content;animation:scroll 28s linear infinite;}
+.marquee-track span{font-family:var(--font-mono);font-size:1.05rem;letter-spacing:0.08em;color:var(--dim);text-transform:uppercase;}
 @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
-/* ===== CONTACT ===== */
+/* contact */
 .contact-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:3.5rem;margin-top:2.5rem;align-items:start;}
-.contact-card{border:1px solid var(--border);border-radius:4px;padding:2rem;background:var(--surface);}
-.contact-row{display:flex;justify-content:space-between;padding:0.9rem 0;border-bottom:1px solid var(--border);font-size:0.9rem;}
+.contact-card{padding:2rem;}
+.contact-row{display:flex;justify-content:space-between;padding:0.9rem 0;border-bottom:1px solid var(--line);font-size:0.9rem;}
 .contact-row:last-child{border-bottom:none;}
-.contact-row span:first-child{color:var(--text-dim);font-family:var(--font-mono);font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;}
-.contact-row a{text-decoration:underline;text-underline-offset:3px;color:var(--text);}
-.contact-row a:hover{color:var(--accent);}
+.contact-row span:first-child{color:var(--dim);font-family:var(--font-mono);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;}
+.contact-row a{text-decoration:underline;text-underline-offset:3px;}
+.contact-row a:hover{color:var(--signal);}
 
-/* ===== FOOTER ===== */
-footer{padding:2.5rem 6%;border-top:1px solid var(--border);}
+/* contact form */
+.contact-form{padding:2rem;}
+.form-row{margin-bottom:1.4rem;}
+.form-row.two{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+.field label{
+  display:block;font-family:var(--font-mono);font-size:0.72rem;
+  letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);
+  margin-bottom:0.5rem;
+}
+.field .req{color:var(--dim);text-transform:none;letter-spacing:0.02em;}
+.field input,.field textarea{
+  width:100%;background:var(--gm-900);color:var(--white);
+  border:1px solid var(--line-strong);border-radius:2px;
+  font-family:var(--font-display);font-size:0.95rem;
+  padding:0.75rem 0.9rem;outline:none;resize:vertical;
+  transition:border-color 0.2s;
+}
+.field input:focus,.field textarea:focus{border-color:var(--signal);}
+.form-note{font-family:var(--font-mono);font-size:0.72rem;color:var(--dim);margin-top:0.9rem;min-height:1em;}
+
+footer{padding:2.5rem 6%;border-top:1px solid var(--black);box-shadow:inset 0 1px 0 var(--line);background:var(--gm-950);}
 .footer-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
-.footer-inner span,.footer-inner a{font-family:var(--font-mono);font-size:0.75rem;color:var(--text-dim);text-decoration:none;}
+.footer-inner span,.footer-inner a{font-family:var(--font-mono);font-size:0.72rem;color:var(--dim);text-decoration:none;}
 
+@media (prefers-reduced-motion: reduce){
+  .marquee-track{animation:none;}
+  html{scroll-behavior:auto;}
+}
 @media (max-width:860px){
   .nav-links{display:none;}
   .hamburger{display:flex;}
-  .viewer-grid,.approach-grid,.contact-grid{grid-template-columns:1fr;}
+  .approach-grid,.contact-grid{grid-template-columns:1fr;}
   .team-grid{grid-template-columns:1fr;}
   .timeline-track{grid-template-columns:1fr;gap:1.75rem;}
   .timeline-track::before{display:none;}
+  .logo-word{display:none;}
+  .hero-copy{max-width:none;right:6%;bottom:5rem;}
 }
 </style>
 </head>
@@ -286,17 +318,10 @@ footer{padding:2.5rem 6%;border-top:1px solid var(--border);}
 
 <header class="topnav" id="topnav">
   <a href="#top" class="logo">
-    <span class="logo-mark">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="12" cy="12" r="10.5" stroke="var(--accent)" stroke-width="1.2"/>
-        <path d="M12 3.5V12L18 15" stroke="var(--text)" stroke-width="1.2" stroke-linecap="round"/>
-        <path d="M12 12L5.5 8.5" stroke="var(--text)" stroke-width="1.2" stroke-linecap="round"/>
-      </svg>
-    </span>
-    AVALON AERO
+    <img src="assets/avalon-logo.png" alt="Avalon Aero logo">
+    <span class="logo-word">AVALON AERO</span>
   </a>
   <nav class="nav-links">
-    <a href="#aircraft">Aircraft</a>
     <a href="#approach">Approach</a>
     <a href="#challenge">Challenge</a>
     <a href="#team">Team</a>
@@ -306,49 +331,40 @@ footer{padding:2.5rem 6%;border-top:1px solid var(--border);}
 </header>
 
 <section class="hero" id="top">
-  <div class="hero-grid"></div>
-  <div class="hero-inner">
-    <div class="eyebrow">DARPA Heavy Lift Challenge — Phase 2</div>
-    <h1>AVALON<br>AERO</h1>
+  <div class="hero-viewer locked" id="viewerStage"></div>
+
+  <div class="viewer-state">
+    <div class="state-chip"><span class="state-dot"></span><span id="stateText">Viewer locked / click model</span></div>
+    <button class="viewer-close" id="viewerClose" aria-label="Reset viewer">✕</button>
+  </div>
+
+  <div class="viewer-instructions" id="viewerInstructions">
+    Drag to orbit<br>
+    Scroll to zoom<br>
+    Right-drag to pan<br>
+    Esc to reset
+  </div>
+
+  <div class="hero-copy">
+    <h1>Excalibur</h1>
     <div class="tagline">To Lifting Heavy.</div>
-    <p class="lede">We're building Excalibur — a swashplateless coaxial helicopter engineered to lift four times its own weight. Three engineers, one airframe, no shortcuts.</p>
-    <div class="hero-actions">
-      <a href="#aircraft" class="btn btn-primary">See the Aircraft ↓</a>
-      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
-    </div>
+    <a href="#contact" class="btn btn-primary">Get in Touch</a>
   </div>
-  <div class="scroll-cue">Scroll</div>
+
+  <div class="hero-hint" id="heroHint">
+    <span>Click the aircraft to take control</span>
+  </div>
+
+  <div class="ruler"></div>
 </section>
 
-<section class="block" id="aircraft">
-  <div class="container">
-    <div class="eyebrow">The Aircraft</div>
-    <h2>Excalibur</h2>
-    <p class="lede">A coaxial VTOL platform built around one constraint: carry as much as possible for as little airframe as possible. Drag to orbit the model — this is a placeholder mesh, swap in your own .glb below.</p>
-    <div class="viewer-grid">
-      <div class="viewer-stage" id="viewerStage">
-        <div class="viewer-badge">Excalibur — Rev. Placeholder</div>
-        <div class="viewer-hint"><span>⟲ Drag to orbit</span><span>⤢ Scroll to zoom</span><span>✥ Right-drag to pan</span></div>
-      </div>
-      <div class="hud">
-        <div class="hud-row"><span class="hud-label">Payload Capacity</span><span class="hud-value accent">130 LB</span></div>
-        <div class="hud-row"><span class="hud-label">Airframe Weight</span><span class="hud-value">25–30 LB</span></div>
-        <div class="hud-row"><span class="hud-label">Payload : Weight Ratio</span><span class="hud-value accent">4 : 1</span></div>
-        <div class="hud-row"><span class="hud-label">Rotor Configuration</span><span class="hud-value">Coaxial, Counter-Rotating</span></div>
-        <div class="hud-row"><span class="hud-label">Rotor Diameter</span><span class="hud-value">10 FT × 2</span></div>
-        <div class="hud-row"><span class="hud-label">Swashplate</span><span class="hud-value">Eliminated (−8–12 LB)</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="block alt" id="approach">
+<section class="block" id="approach">
   <div class="container">
     <div class="eyebrow">Technical Approach</div>
     <h2>Swashplateless by design</h2>
     <div class="approach-grid">
       <div>
-        <p class="lede">Conventional helicopters control blade pitch with a swashplate — mechanically complex, heavy, and another point of failure. Excalibur replaces it with inclined lag-pitch coupling hinges set 50° from vertical. Independent torque modulation on each rotor's electric motor drives a lead-lag oscillation that passively couples into cyclic pitch control — an approach grounded in rotorcraft research from the University of Pennsylvania.</p>
+        <p class="lede">Conventional helicopters control blade pitch with a swashplate, mechanically complex, heavy, and another point of failure. Excalibur replaces it with inclined lag-pitch coupling hinges set 50° from vertical. Independent torque modulation on each rotor's electric motor drives a lead-lag oscillation that passively couples into cyclic pitch control, an approach grounded in rotorcraft research from the University of Pennsylvania.</p>
         <ul class="spec-list">
           <li>Dual electric motors with independent torque control</li>
           <li>Belt-drive reduction</li>
@@ -356,26 +372,26 @@ footer{padding:2.5rem 6%;border-top:1px solid var(--border);}
           <li>Custom flight controller firmware for swashplateless control</li>
         </ul>
       </div>
-      <div class="hinge-diagram">
+      <div class="hinge-diagram panel brackets">
         <svg viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="160" y1="40" x2="160" y2="280" stroke="var(--border-strong)" stroke-width="1"/>
-          <line x1="160" y1="280" x2="255" y2="120" stroke="var(--accent)" stroke-width="2"/>
-          <path d="M160 220 A70 70 0 0 1 195.5 156" stroke="var(--text-dim)" stroke-width="1" fill="none"/>
-          <text x="204" y="195" fill="var(--text-muted)" font-family="JetBrains Mono" font-size="13">50°</text>
-          <circle cx="160" cy="280" r="4" fill="var(--text)"/>
-          <text x="20" y="300" fill="var(--text-dim)" font-family="JetBrains Mono" font-size="11" letter-spacing="1">MAST AXIS</text>
-          <text x="222" y="112" fill="var(--accent)" font-family="JetBrains Mono" font-size="11" letter-spacing="1">HINGE LINE</text>
+          <line x1="160" y1="40" x2="160" y2="280" stroke="var(--line-strong)" stroke-width="1"/>
+          <line x1="160" y1="280" x2="255" y2="120" stroke="var(--signal)" stroke-width="2"/>
+          <path d="M160 220 A70 70 0 0 1 195.5 156" stroke="var(--dim)" stroke-width="1" fill="none"/>
+          <text x="204" y="195" fill="var(--muted)" font-family="JetBrains Mono" font-size="13">50°</text>
+          <circle cx="160" cy="280" r="4" fill="var(--white)"/>
+          <text x="20" y="300" fill="var(--dim)" font-family="JetBrains Mono" font-size="11" letter-spacing="1">MAST AXIS</text>
+          <text x="222" y="112" fill="var(--signal)" font-family="JetBrains Mono" font-size="11" letter-spacing="1">HINGE LINE</text>
         </svg>
       </div>
     </div>
   </div>
 </section>
 
-<section class="block" id="challenge">
+<section class="block raised" id="challenge">
   <div class="container">
     <div class="eyebrow">The Mission</div>
     <h2>DARPA Heavy Lift Challenge</h2>
-    <p class="lede">The LIFT Challenge asks for a VTOL aircraft that can carry four times its own weight — a capability that doesn't exist today. Solving it opens new missions in logistics, emergency response, and remote operations, where traditional helicopters are too heavy and drones can't carry enough.</p>
+    <p class="lede">The LIFT Challenge asks for a VTOL aircraft that can carry four times its own weight, a capability that doesn't exist today. Solving it opens new missions in logistics, emergency response, and remote operations, where traditional helicopters are too heavy and drones can't carry enough.</p>
     <div class="timeline">
       <div class="timeline-track">
         <div class="tl-node current">
@@ -396,7 +412,7 @@ footer{padding:2.5rem 6%;border-top:1px solid var(--border);}
           <div class="tl-title">Flight Test</div>
           <div class="tl-desc">Flight test video and FAA certification.</div>
         </div>
-        <div class="tl-node">
+        <div class="tl-node target">
           <div class="tl-dot"></div>
           <div class="tl-phase">Summer 2026</div>
           <div class="tl-title">Competition</div>
@@ -407,42 +423,71 @@ footer{padding:2.5rem 6%;border-top:1px solid var(--border);}
   </div>
 </section>
 
-<section class="block alt" id="team">
+<section class="block" id="team">
   <div class="container">
     <div class="eyebrow">Who We Are</div>
     <h2>Three engineers, one mission</h2>
-    <p class="lede">Avalon Aero is a three-person aerospace startup based in Southern California, built independently around day jobs and a shared bet on what a swashplateless coaxial airframe can do.</p>
+    <p class="lede">Avalon Aero is a three-person aerospace startup based in Southern California, built independently around day jobs and a vision for what a swashplateless coaxial airframe can do.</p>
     <div class="team-grid">
-      <div class="team-card"><div class="team-mark">01</div><div class="team-name">Alec Ohanesian</div><div class="team-role">Co-Founder</div></div>
-      <div class="team-card"><div class="team-mark">02</div><div class="team-name">John Boranian</div><div class="team-role">Co-Founder · Aerospace Engineering, UCLA</div></div>
-      <div class="team-card"><div class="team-mark">03</div><div class="team-name">Jack Howard</div><div class="team-role">Co-Founder</div></div>
+      <div class="team-card panel brackets"><div class="team-name">Alec Ohanesian</div><div class="team-role">Design/Manufacturing</div></div>
+      <div class="team-card panel brackets"><div class="team-name">John Boranian</div><div class="team-role">Design/Manufacturing</div></div>
+      <div class="team-card panel brackets"><div class="team-name">Jack Howard</div><div class="team-role">Software/Avionics</div></div>
     </div>
   </div>
 </section>
 
-<section class="block" id="partners">
+<section class="block raised" id="partners">
   <div class="container">
     <div class="eyebrow">Built With the Best</div>
     <h2>Partners &amp; Sponsors</h2>
+    <a href="partners.html" class="btn btn-ghost" style="margin-top:0.5rem;">View All Partners &#8594;</a>
   </div>
   <div class="marquee">
     <div class="marquee-track">
-      <span>Propel Aero</span><span>—</span><span>Harwal Group</span><span>—</span><span>SSAB</span><span>—</span><span>Hargrave Technologies</span><span>—</span><span>Zero Point Energy</span><span>—</span>
-      <span>Propel Aero</span><span>—</span><span>Harwal Group</span><span>—</span><span>SSAB</span><span>—</span><span>Hargrave Technologies</span><span>—</span><span>Zero Point Energy</span><span>—</span>
+      <span>Propel Aero</span><span>•</span><span>Harwal Group</span><span>•</span><span>SSAB</span><span>•</span><span>Hargrave Technologies</span><span>•</span><span>Zero Point Energy</span><span>•</span>
+      <span>Propel Aero</span><span>•</span><span>Harwal Group</span><span>•</span><span>SSAB</span><span>•</span><span>Hargrave Technologies</span><span>•</span><span>Zero Point Energy</span><span>•</span>
     </div>
   </div>
 </section>
 
-<section class="block alt" id="contact">
+<section class="block" id="contact">
   <div class="container">
     <div class="eyebrow">Get in Touch</div>
-    <h2>Let's talk</h2>
     <div class="contact-grid">
-      <p class="lede">We respond to serious inquiries within 24 hours. Reach out for technical briefings, press, or investor conversations as we build toward Summer 2026.</p>
-      <div class="contact-card">
-        <div class="contact-row"><span>Location</span><span>Los Angeles, CA</span></div>
-        <div class="contact-row"><span>Email</span><a href="mailto:Contact@Avalon-Aero.com">Contact@Avalon-Aero.com</a></div>
-        <div class="contact-row"><span>Phone</span><a href="tel:+19496808725">+1 (949) 680-8725</a></div>
+      <div>
+        <h2>Contact Us</h2>
+        <p class="lede">Our team responds to all serious inquiries within twenty-four hours. For immediate questions about our design or competition timeline, please reach out directly. We are available for technical presentations, press interviews, and potential investor discussions as we build toward Summer 2026.</p>
+        <div class="contact-card panel brackets" style="margin-top:2rem;">
+          <div class="contact-row"><span>Location</span><span>Los Angeles, CA</span></div>
+          <div class="contact-row"><span>Email</span><a href="mailto:Contact@Avalon-Aero.com">Contact@Avalon-Aero.com</a></div>
+          <div class="contact-row"><span>Phone</span><a href="tel:+19496808725">+1 (949) 680-8725</a></div>
+        </div>
+      </div>
+      <div class="contact-form panel brackets">
+        <div class="form-row two">
+          <div class="field">
+            <label for="cf-first">First Name <span class="req">(required)</span></label>
+            <input id="cf-first" type="text" autocomplete="given-name">
+          </div>
+          <div class="field">
+            <label for="cf-last">Last Name <span class="req">(required)</span></label>
+            <input id="cf-last" type="text" autocomplete="family-name">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="cf-email">Email <span class="req">(required)</span></label>
+            <input id="cf-email" type="email" autocomplete="email">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="cf-msg">Message <span class="req">(required)</span></label>
+            <textarea id="cf-msg" rows="6"></textarea>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" id="cfSend">Send</button>
+        <div class="form-note" id="cfNote"></div>
       </div>
     </div>
   </div>
@@ -460,35 +505,43 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { OutlinePass } from 'three/addons/postprocessing/OutlinePass.js';
+import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
-/* ---------- nav scroll state ---------- */
 const topnav = document.getElementById('topnav');
 window.addEventListener('scroll', () => {
   topnav.classList.toggle('scrolled', window.scrollY > 20);
 });
 
-/* ---------- marquee pause on hover ---------- */
 document.querySelectorAll('.marquee-track').forEach(t => {
   t.addEventListener('mouseenter', () => t.style.animationPlayState = 'paused');
   t.addEventListener('mouseleave', () => t.style.animationPlayState = 'running');
 });
 
 /* =========================================================
-   EXCALIBUR 3D VIEWER
-   Orbit only — panning is disabled on purpose.
-   To use your real model: drop a .glb into /models/ and set
-   MODEL_URL below. If it fails to load (e.g. not uploaded yet)
-   this silently falls back to the placeholder rig.
+   EXCALIBUR VIEWER — click-to-engage instrument.
+   Idle: locked, slow auto-rotate, clicks anywhere on the
+   canvas engage control. Esc or the ✕ button resets the
+   camera to stowed orientation and locks it again.
    ========================================================= */
 const MODEL_URL = 'models/Excalibur_Assembly.glb';
 
 const stage = document.getElementById('viewerStage');
+const stateText = document.getElementById('stateText');
+const closeBtn = document.getElementById('viewerClose');
+const instructions = document.getElementById('viewerInstructions');
+const heroHint = document.getElementById('heroHint');
+
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0xf4f4f2);
-scene.fog = new THREE.Fog(0xf4f4f2, 8, 18);
+scene.background = null;
+
+const DEFAULT_CAM = new THREE.Vector3(3.4, 2.1, 3.6);
+const DEFAULT_TARGET = new THREE.Vector3(0, 0.4, 0);
 
 const camera = new THREE.PerspectiveCamera(38, stage.clientWidth / stage.clientHeight, 0.1, 100);
-camera.position.set(3.4, 2.1, 3.6);
+camera.position.copy(DEFAULT_CAM);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -498,29 +551,39 @@ renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.05;
 stage.appendChild(renderer.domElement);
 
-// lighting
-scene.add(new THREE.AmbientLight(0xffffff, 0.55));
-const key = new THREE.DirectionalLight(0xffffff, 1.5);
-key.position.set(4, 6, 3);
-scene.add(key);
-const rim = new THREE.DirectionalLight(0xff8a50, 0.9);
-rim.position.set(-4, 2, -3);
-scene.add(rim);
-const fill = new THREE.PointLight(0x6b8cff, 0.4);
-fill.position.set(0, -2, 2);
-scene.add(fill);
+// postprocessing — black silhouette outline
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene, camera));
+const outlinePass = new OutlinePass(new THREE.Vector2(stage.clientWidth, stage.clientHeight), scene, camera);
+outlinePass.edgeStrength = 6.0;
+outlinePass.edgeGlow = 0.0;
+outlinePass.edgeThickness = 1.0;
+outlinePass.pulsePeriod = 0;
+outlinePass.visibleEdgeColor.set(0x000000);
+outlinePass.hiddenEdgeColor.set(0x000000);
+composer.addPass(outlinePass);
+composer.addPass(new OutputPass());
 
-// controls — orbit, zoom, and a deliberately LIMITED pan (clamped below)
-const PAN_ORIGIN = new THREE.Vector3(0, 0.4, 0);
-const PAN_LIMIT = 1.1; // max distance the pivot can be dragged from PAN_ORIGIN
+// lighting — cool key, warm rim, machined feel
+scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+const keyL = new THREE.DirectionalLight(0xffffff, 1.5);
+keyL.position.set(4, 6, 3);
+scene.add(keyL);
+const rimL = new THREE.DirectionalLight(0xffd070, 0.7);
+rimL.position.set(-4, 2, -3);
+scene.add(rimL);
+const fillL = new THREE.PointLight(0x7d99b5, 0.45);
+fillL.position.set(0, -2, 2);
+scene.add(fillL);
 
+// controls — start LOCKED
+const PAN_LIMIT = 1.1;
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.target.copy(PAN_ORIGIN);
+controls.target.copy(DEFAULT_TARGET);
+controls.enabled = false;
 controls.enablePan = true;
 controls.screenSpacePanning = true;
 controls.panSpeed = 0.6;
-controls.enableRotate = true;
-controls.enableZoom = true;
 controls.minDistance = 2.2;
 controls.maxDistance = 7;
 controls.minPolarAngle = 0.15;
@@ -528,41 +591,71 @@ controls.maxPolarAngle = Math.PI - 0.35;
 controls.enableDamping = true;
 controls.dampingFactor = 0.08;
 controls.autoRotate = true;
-controls.autoRotateSpeed = 0.8;
-controls.addEventListener('start', () => controls.autoRotate = false);
-
-// clamp the pan target so the model can never be dragged out of frame
+controls.autoRotateSpeed = 0.7;
 controls.addEventListener('change', () => {
-  const offset = controls.target.clone().sub(PAN_ORIGIN);
+  const offset = controls.target.clone().sub(DEFAULT_TARGET);
   if (offset.length() > PAN_LIMIT) {
     offset.setLength(PAN_LIMIT);
-    controls.target.copy(PAN_ORIGIN).add(offset);
+    controls.target.copy(DEFAULT_TARGET).add(offset);
   }
 });
+
+let live = false;
+let resetAnim = null;
+
+function engage() {
+  if (live) return;
+  live = true;
+  controls.enabled = true;
+  controls.autoRotate = false;
+  stage.classList.remove('locked');
+  stage.classList.add('live');
+  closeBtn.classList.add('show');
+  instructions.classList.add('show');
+  stateText.textContent = 'Viewer live';
+  heroHint.innerHTML = '';
+}
+
+function disengage() {
+  if (!live && !resetAnim) return;
+  live = false;
+  controls.enabled = false;
+  stage.classList.remove('live');
+  stage.classList.add('locked');
+  closeBtn.classList.remove('show');
+  instructions.classList.remove('show');
+  stateText.textContent = 'Viewer locked / click model';
+  heroHint.innerHTML = '<span>Click the aircraft to take control</span>';
+  // animate camera back to stowed orientation
+  resetAnim = {
+    t: 0,
+    fromPos: camera.position.clone(),
+    fromTarget: controls.target.clone()
+  };
+}
+
+stage.addEventListener('click', () => { if (!live) engage(); });
+closeBtn.addEventListener('click', (e) => { e.stopPropagation(); disengage(); });
+window.addEventListener('keydown', (e) => { if (e.key === 'Escape') disengage(); });
 
 const rig = new THREE.Group();
 scene.add(rig);
 
-/* ---- placeholder Excalibur rig (procedural stand-in) ---- */
+/* placeholder rig — white, stands in until the real GLB loads */
 function buildPlaceholder() {
   const group = new THREE.Group();
+  const body = new THREE.MeshStandardMaterial({ color: 0xf2f0ea, metalness: 0.15, roughness: 0.35 });
+  const alloy = new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 0.5, roughness: 0.25 });
 
-  const carbon = new THREE.MeshStandardMaterial({ color: 0x080808, metalness: 0.25, roughness: 0.5 });
-  const alloy = new THREE.MeshStandardMaterial({ color: 0x0d0d0d, metalness: 0.55, roughness: 0.32 });
-  const warn = carbon;
-
-  // fuselage
-  const fuselage = new THREE.Mesh(new THREE.CapsuleGeometry(0.28, 0.9, 6, 12), carbon);
+  const fuselage = new THREE.Mesh(new THREE.CapsuleGeometry(0.28, 0.9, 6, 12), body);
   fuselage.rotation.z = Math.PI / 2;
   fuselage.position.y = 0.1;
   group.add(fuselage);
 
-  // mast
   const mast = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.06, 1.3, 16), alloy);
   mast.position.y = 0.85;
   group.add(mast);
 
-  // skids
   [-0.42, 0.42].forEach(z => {
     const skid = new THREE.Mesh(new THREE.CylinderGeometry(0.03, 0.03, 1.5, 8), alloy);
     skid.rotation.z = Math.PI / 2;
@@ -585,12 +678,9 @@ function buildPlaceholder() {
     for (let i = 0; i < 2; i++) {
       const blade = new THREE.Group();
       blade.rotation.y = i * Math.PI;
-      const bladeMesh = new THREE.Mesh(new THREE.BoxGeometry(bladeLen, 0.02, 0.11), carbon);
+      const bladeMesh = new THREE.Mesh(new THREE.BoxGeometry(bladeLen, 0.02, 0.11), body);
       bladeMesh.position.x = bladeLen / 2;
       blade.add(bladeMesh);
-      const tip = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.024, 0.115), warn);
-      tip.position.x = bladeLen - 0.08;
-      blade.add(tip);
       rotor.add(blade);
     }
     rotor.userData.spinDir = dir;
@@ -601,21 +691,19 @@ function buildPlaceholder() {
   const rotorBottom = makeRotor(1.32, -1);
   group.add(rotorTop, rotorBottom);
   group.userData.rotors = [rotorTop, rotorBottom];
-
   group.scale.setScalar(1.05);
   return group;
 }
 
-// soft contact shadow — grounds the object on the white stage
-function makeContactShadow() {
+function makeGroundGlow() {
   const size = 512;
   const canvas = document.createElement('canvas');
   canvas.width = canvas.height = size;
   const ctx = canvas.getContext('2d');
   const grad = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
-  grad.addColorStop(0, 'rgba(0,0,0,0.32)');
-  grad.addColorStop(0.6, 'rgba(0,0,0,0.10)');
-  grad.addColorStop(1, 'rgba(0,0,0,0)');
+  grad.addColorStop(0, 'rgba(255,255,255,0.14)');
+  grad.addColorStop(0.6, 'rgba(255,255,255,0.045)');
+  grad.addColorStop(1, 'rgba(255,255,255,0)');
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, size, size);
   const mat = new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(canvas), transparent: true, depthWrite: false });
@@ -624,16 +712,17 @@ function makeContactShadow() {
   mesh.position.y = -0.56;
   return mesh;
 }
-rig.add(makeContactShadow());
+rig.add(makeGroundGlow());
 
 const placeholder = buildPlaceholder();
 rig.add(placeholder);
+outlinePass.selectedObjects = [placeholder];
 
-// attempt to load a real model; fall back silently if absent
 const dracoLoader = new DRACOLoader();
 dracoLoader.setDecoderPath('https://unpkg.com/three@0.160.0/examples/jsm/libs/draco/');
 const loader = new GLTFLoader();
 loader.setDRACOLoader(dracoLoader);
+
 loader.load(
   MODEL_URL,
   (gltf) => {
@@ -647,16 +736,15 @@ loader.load(
     const center = new THREE.Vector3();
     box.getCenter(center);
     model.position.sub(center.multiplyScalar(2.6 / maxDim));
-    const blackMat = new THREE.MeshStandardMaterial({ color: 0x0a0a0a, metalness: 0.3, roughness: 0.45 });
-    model.traverse((child) => { if (child.isMesh) child.material = blackMat; });
+    const whiteMat = new THREE.MeshStandardMaterial({ color: 0xf2f0ea, metalness: 0.15, roughness: 0.35 });
+    model.traverse((child) => { if (child.isMesh) child.material = whiteMat; });
     rig.add(model);
-    document.querySelector('.viewer-badge').textContent = 'Excalibur — Model Loaded';
+    outlinePass.selectedObjects = [model];
     console.log('[Excalibur viewer] model loaded OK from', MODEL_URL);
   },
   undefined,
   (err) => {
-    console.warn('[Excalibur viewer] failed to load', MODEL_URL, '— showing placeholder. Error:', err);
-    document.querySelector('.viewer-badge').textContent = 'Excalibur — Placeholder (model load failed, see console)';
+    console.warn('[Excalibur viewer] failed to load', MODEL_URL, 'showing placeholder. Error:', err);
   }
 );
 
@@ -665,6 +753,8 @@ function onResize() {
   camera.aspect = w / h;
   camera.updateProjectionMatrix();
   renderer.setSize(w, h);
+  composer.setSize(w, h);
+  outlinePass.resolution.set(w, h);
 }
 window.addEventListener('resize', onResize);
 
@@ -672,15 +762,50 @@ const clock = new THREE.Clock();
 function animate() {
   requestAnimationFrame(animate);
   const dt = clock.getDelta();
+
   if (placeholder.parent) {
     placeholder.userData.rotors.forEach(r => { r.rotation.y += dt * 2.4 * r.userData.spinDir; });
   }
+
+  // camera reset animation
+  if (resetAnim) {
+    resetAnim.t = Math.min(1, resetAnim.t + dt / 0.7);
+    const e = 1 - Math.pow(1 - resetAnim.t, 3); // ease-out cubic
+    camera.position.lerpVectors(resetAnim.fromPos, DEFAULT_CAM, e);
+    controls.target.lerpVectors(resetAnim.fromTarget, DEFAULT_TARGET, e);
+    if (resetAnim.t >= 1) resetAnim = null;
+  }
+
   controls.update();
-  renderer.render(scene, camera);
+  composer.render();
 }
 animate();
 
-/* ---------- timeline reveal on scroll ---------- */
+/* contact form: validates and opens a prefilled email */
+const cfSend = document.getElementById('cfSend');
+if (cfSend) {
+  cfSend.addEventListener('click', () => {
+    const first = document.getElementById('cf-first').value.trim();
+    const last = document.getElementById('cf-last').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    const msg = document.getElementById('cf-msg').value.trim();
+    const note = document.getElementById('cfNote');
+    if (!first || !last || !email || !msg) {
+      note.textContent = 'All fields are required.';
+      return;
+    }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      note.textContent = 'Enter a valid email address.';
+      return;
+    }
+    const subject = encodeURIComponent('Inquiry from ' + first + ' ' + last);
+    const body = encodeURIComponent(msg + '\n\nFrom: ' + first + ' ' + last + '\nEmail: ' + email);
+    window.location.href = 'mailto:Contact@Avalon-Aero.com?subject=' + subject + '&body=' + body;
+    note.textContent = 'Opening your email client...';
+  });
+}
+
+/* scroll reveals */
 const io = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) e.target.style.opacity = 1; });
 }, { threshold: 0.2 });
